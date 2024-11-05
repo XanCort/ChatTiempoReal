@@ -1,1 +1,19 @@
-/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+ScrollPane {
+	
+	-fx-max-height: 400px;
+	-fx-max-width: 300px;
+	-fx-pref-height: 300px;
+	-fx-pref-width: 400px;
+	
+	-fx-padding: 50px, 50px, 50px, 0px;
+	
+}
+
+TextArea {
+	-fx-min-width: 200px;
+	-fx-min-height: 50px;
+}
+
+Button{
+	
+}

@@ -19,6 +19,7 @@ public class Controlador {
 		vista1.start(stage);
 		vista2.start(stage2);
 		
+		/*
 		vista1.getCampoMensaje().setOnKeyPressed(e -> {
 			if(e.isShiftDown() && e.getCode().equals(KeyCode.ENTER)) {
 				vista1.getCampoMensaje().getText();
@@ -33,6 +34,7 @@ public class Controlador {
 				crearEtiqueta(vista2.getCampoMensaje().getText());
 			}
 		});
+		*/
 		
 		vista1.getBtnEnviar().setOnAction(e -> {
 			crearEtiqueta(vista1.getCampoMensaje().getText());
@@ -50,6 +52,7 @@ public class Controlador {
 		Label etiqueta2 = new Label(mensaje);
 		vista1.getFondo().getChildren().add(etiqueta);
 		vista2.getFondo().getChildren().add(etiqueta2);
+		
 	}
 	
 }
