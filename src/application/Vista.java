@@ -74,6 +74,23 @@ public class Vista implements Serializable {
 		this.fondo = fondo;
 	}
 
-	
+	/*
+	 boton.setOnAction(e -> {
+		 if(this.getId == 1){
+		 	vista1 = this;
+		 	vista2 = controlador.getVista2;
+		 	crearEtiqueta(mensaje, id, vista1, vista2)
+		 } else {
+		 	vista1 = controlador.getVista1;
+		 	vista2 = this
+		 	crearEtiqueta(mensaje, id, vista1, vista2)
+		 }
+	 });
+	 
+	 public void crearEtiqueta(){
+	 
+	 }
+	 
+	 */
 	
 }
