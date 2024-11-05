@@ -6,8 +6,8 @@ import javafx.stage.Stage;
 
 public class Controlador {
 
-	private Vista vista1 ;
-	private Vista vista2 ;
+	Vista vista1 ;
+	Vista vista2 ;
 	
 	public Controlador() {
 		this.vista1=vista1;
@@ -39,10 +39,7 @@ public class Controlador {
 //			}
 //		});
 //		
-//		vista1.getBtnEnviar().setOnAction(e -> {
-//			crearEtiqueta(vista1.getCampoMensaje().getText(),"uno");
-//			
-//		});
+//		
 //		
 //		vista2.getBtnEnviar().setOnAction(e -> {
 //			crearEtiqueta(vista2.getCampoMensaje().getText(),"dos");
@@ -66,9 +63,10 @@ public class Controlador {
 //	}
 	
 	
-	public void crearEtiqueta() {
-		this.vista1.crearEtiqueta( null, vista1, vista2);
-		this.vista2.crearEtiqueta( null, vista1, vista2);
+	public void crearEtiqueta(String s) {
+		vista1.crearEtiqueta(s);
+		vista2.crearEtiqueta(s);
+		
 	}
 	
 }

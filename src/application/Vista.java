@@ -64,10 +64,8 @@ public class Vista implements Serializable {
 		
 
 		btnEnviar.setOnAction(e -> {
-			
-	
-//			crearEtiqueta(vista1.getCampoMensaje().getText(),"uno");
-			
+			c.crearEtiqueta(getCampoMensaje().getText());
+		
 		});
 		//root.getChildren().add(s);
 		//root.getChildren().add(campoMensaje);
@@ -130,22 +128,11 @@ public class Vista implements Serializable {
 	
 	
 	
-	public void crearEtiqueta (String id, Vista vista1, Vista vista2) {
+	public void crearEtiqueta (String texto) {
 		
+		Label etiqueta = new Label(texto);
+		getFondo().getChildren().add(etiqueta);
 		
-		
-		
-		/*
-		Label etiqueta = new Label(vista1.getCampoMensaje().getText());
-		Label etiqueta2 = new Label(vista1.getCampoMensaje().getText());
-		etiqueta.setId(id);
-		etiqueta2.setId(id);
-		vista1.getFondo().getChildren().add(etiqueta);
-		vista2.getFondo().getChildren().add(etiqueta2);
-		
-		vista1.getCampoMensaje().clear();
-		vista2.getCampoMensaje().clear();
-		*/
 		
 	}
 	

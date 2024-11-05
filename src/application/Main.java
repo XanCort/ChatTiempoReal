@@ -12,6 +12,11 @@ public class Main extends Application {
 			
 			Vista vista1 = new Vista();
 			Vista vista2 = new Vista();
+			
+			controlador.vista1 = vista1;
+			controlador.vista2 = vista2;
+			
+			
 			vista1.setC(controlador);
 			vista1.start(new Stage());
 			vista2.setC(controlador);
