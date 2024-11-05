@@ -8,9 +8,16 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-
 			Controlador controlador = new Controlador();
-			controlador.start(primaryStage);
+			
+			Vista vista1 = new Vista();
+			Vista vista2 = new Vista();
+			vista1.setC(controlador);
+			vista1.start(new Stage());
+			vista2.setC(controlador);
+			vista2.start(new Stage());
+
+			
 			
 		} catch(Exception e) {
 			e.printStackTrace();

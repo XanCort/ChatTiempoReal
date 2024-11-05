@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ScrollPane.ScrollBarPolicy;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -18,10 +19,16 @@ public class Vista implements Serializable {
 	private Button btnEnviar = new Button("Enviar mensaje");
 	private ScrollPane s = new ScrollPane();
 	private VBox fondo = new VBox();
+	private Controlador c = new Controlador();
+	private Vista vistaGemela;
 	
+	
+	
+
+
 	public void start(Stage primaryStage) {
 
-		
+	
 
 		Label etiqueta = new Label("Hola qiue tal");
 		Label etiqueta1 = new Label("Hola que tal");
@@ -48,15 +55,37 @@ public class Vista implements Serializable {
 		campoMensaje.setMaxWidth(100);
 		
 		HBox root = new HBox();
-		root.getChildren().add(s);
-		root.getChildren().add(campoMensaje);
-		root.getChildren().add(btnEnviar);
+		
+		GridPane grid = new GridPane();
+		
+		grid.add(s, 0, 0, 10,1);
+		grid.add(campoMensaje, 0, 1);
+		grid.add(btnEnviar, 0, 2);
+		
 
-		Scene scene = new Scene(root, 400, 400);
+		btnEnviar.setOnAction(e -> {
+			
+	
+//			crearEtiqueta(vista1.getCampoMensaje().getText(),"uno");
+			
+		});
+		//root.getChildren().add(s);
+		//root.getChildren().add(campoMensaje);
+		//root.getChildren().add(btnEnviar);
+
+		Scene scene = new Scene(grid, 400, 400);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(scene);
 		primaryStage.show();
 
+	}
+
+	public Controlador getC() {
+		return c;
+	}
+
+	public void setC(Controlador c) {
+		this.c = c;
 	}
 
 	public TextArea getCampoMensaje() {
@@ -91,6 +120,34 @@ public class Vista implements Serializable {
 		this.fondo = fondo;
 	}
 
+	public Vista getVistaGemela() {
+		return vistaGemela;
+	}
+
+	public void setVistaGemela(Vista vistaGemela) {
+		this.vistaGemela = vistaGemela;
+	}
+	
+	
+	
+	public void crearEtiqueta (String id, Vista vista1, Vista vista2) {
+		
+		
+		
+		
+		/*
+		Label etiqueta = new Label(vista1.getCampoMensaje().getText());
+		Label etiqueta2 = new Label(vista1.getCampoMensaje().getText());
+		etiqueta.setId(id);
+		etiqueta2.setId(id);
+		vista1.getFondo().getChildren().add(etiqueta);
+		vista2.getFondo().getChildren().add(etiqueta2);
+		
+		vista1.getCampoMensaje().clear();
+		vista2.getCampoMensaje().clear();
+		*/
+		
+	}
 	
 	
 }
