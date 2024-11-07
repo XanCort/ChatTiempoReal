@@ -2,9 +2,6 @@ package application;
 
 import javafx.scene.control.TextArea;
 import java.io.Serializable;
-import java.net.URL;
-
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -46,21 +43,29 @@ public class Vista implements Serializable {
 		HBox contenedorMensaje = new HBox();
 		contenedorMensaje.getChildren().add(campoMensaje);
 		contenedorMensaje.getChildren().add(btnEnviar);
-		/*
+		
 		Image archivoIcon = new Image(getClass().getResourceAsStream("/aplication/images/fotoMenu.png"));
         ImageView archivoIconView = new ImageView(archivoIcon);
         archivoIconView.setFitWidth(20); // Ajustar el tamaño del ícono
         archivoIconView.setFitHeight(20); 
+        
+        Label nombre = new Label("Usuario " + id);
+        Label campoEscribiendo = new Label("");
+		
+		
+		VBox textoCabecera = new VBox();
+		textoCabecera.getChildren().add(nombre);
+		textoCabecera.getChildren().add(campoEscribiendo);
 		
 		HBox cabecera = new HBox();
-		contenedorMensaje.getChildren().add(archivoIconView);
-		contenedorMensaje.getChildren().add(btnEnviar);
-		*/
+		cabecera.getChildren().add(archivoIconView);
+		cabecera.getChildren().add(textoCabecera);
+		
 		HBox root = new HBox();
 		
 		GridPane grid = new GridPane();
 		
-		//grid.add(cabecera, 0, 0);
+		grid.add(cabecera, 0, 0);
 		grid.add(s, 0, 1);
 		grid.add(contenedorMensaje, 0, 2);		
 
@@ -131,9 +136,4 @@ public class Vista implements Serializable {
 		}
 	}
 	
-	public Image addImageAlComponente(String ruta) {
-		URL linkImgEntrar = getClass().getResource(ruta);
-		return new Image(linkImgEntrar.toString(), 30, 30, false, true);
-	}
-
 }

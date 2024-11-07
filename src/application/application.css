@@ -14,17 +14,6 @@ ScrollPane {
 	
 }
 
-Label{
-	
-	-fx-background-color: #3498db;  
-    -fx-text-fill: white;             
-    -fx-padding: 10.0px;                 
-    -fx-background-radius: 15.0px;     
-    -fx-border-radius: 15.0px;           
-    -fx-border-color: #2980b9;          
-    -fx-border-width: 2.0px;
-}
-
 TextArea{
 	-fx-max-height: 40.0px;
 	-fx-max-width: 225.0px;
@@ -39,19 +28,14 @@ Button{
 	-fx-pref-width: 75px;
 }
 
-HBox{
-	-fx-background-color: green;
-	
-}
-
-VBox{
+VBox #fondouno{
 	-fx-max-height: 300.0px;
 	-fx-max-width: 285.0px;
 	-fx-pref-height: 300.0px;
 	-fx-pref-width: 285.0px;
 	-fx-background-color: blue;
-	-fx-padding: 0px;
-	-fx-padding: 5px, 0px;
+	-fx-padding: 5px;
+	
 }
 
 #fondouno #uno {
