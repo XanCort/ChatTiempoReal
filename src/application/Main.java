@@ -12,7 +12,8 @@ public class Main extends Application {
 			
 			Vista vista1 = new Vista();
 			Vista vista2 = new Vista();
-			
+			vista1.id ="uno";
+			vista2.id="dos";
 			controlador.vista1 = vista1;
 			controlador.vista2 = vista2;
 			

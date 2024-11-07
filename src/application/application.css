@@ -1,5 +1,15 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
 
-#uno{
+
+VBox #uno{
+	
+	-fx-text-alignment: right ;
+}
+
+
+#unoa #uno{
 	-fx-text-fill: red;
+}
+#dosa #uno{
+	-fx-text-fill: blue;
 }
