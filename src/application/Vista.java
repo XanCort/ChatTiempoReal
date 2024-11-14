@@ -32,15 +32,9 @@ public class Vista implements Serializable {
 	public void start(Stage primaryStage) {
 		
 	
-
-		Label etiqueta = new Label("Hola qiue tal");
-		Label etiqueta1 = new Label("Hola que tal");
-		Label etiqueta2 = new Label("Hola que tal");
-		Label etiqueta3 = new Label("Hola que tal");
 		escribiendo = new Label("");
 
-		fondo.getChildren().addAll(etiqueta, etiqueta1, etiqueta2, etiqueta3);
-		
+		fondo.getChildren().addAll();
 		
 		
 		fondo.setId(id+"a");
@@ -74,11 +68,6 @@ public class Vista implements Serializable {
 				c.escribiendo(this.id);
 		});
 		
-		
-		
-		//root.getChildren().add(s);
-		//root.getChildren().add(campoMensaje);
-		//root.getChildren().add(btnEnviar);
 
 		Scene scene = new Scene(grid, 400, 400);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
@@ -158,10 +147,10 @@ public class Vista implements Serializable {
 	
 	
 	
-	public void crearEtiqueta (String texto, String id) {
+	public void crearEtiqueta (Mensaje m) {
 		
-		Label etiqueta = new Label(texto);
-		etiqueta.setId(id);
+		Label etiqueta = new Label(m.getTexto());
+		etiqueta.setId(m.getId());
 		etiqueta.setWrapText(true);
 		etiqueta.setTextAlignment(TextAlignment.RIGHT);
 		etiqueta.setMaxWidth(150);
