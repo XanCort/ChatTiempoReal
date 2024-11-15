@@ -11,16 +11,19 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ScrollPane.ScrollBarPolicy;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 public class Vista implements Serializable {
 
 	private TextArea campoMensaje = new TextArea();
-	private Button btnEnviar = new Button("Enviar mensaje");
+	private Button btnEnviar = new Button("Enviar");
 	private ScrollPane s = new ScrollPane();
 	private VBox fondo = new VBox();
 	private Controlador c = new Controlador();
@@ -34,30 +37,52 @@ public class Vista implements Serializable {
 	
 		escribiendo = new Label("");
 
-		fondo.getChildren().addAll();
+		Image imagen = new Image(getClass().getResourceAsStream("images/ic_usuario_"+id+".png"));
+		ImageView imagenView = new ImageView(imagen);
 		
+		fondo.setId("fondo" + id);
+		campoMensaje.setPromptText("Escribe tu mensaje...");
 		
-		fondo.setId(id+"a");
-		s.setMinHeight(300);
-		fondo.setMinWidth(200);
-		s.setMinWidth(200);
 		s.setContent(fondo);
 		s.setVbarPolicy(ScrollBarPolicy.ALWAYS);
+		s.setFitToWidth(true);
+
+        // Asegurar que el ScrollPane se desplace siempre hacia abajo
+		fondo.heightProperty().addListener((observable, oldValue, newValue) ->
+            
+			actualizarScroll()
+        	
+        );
 		
 		
-		campoMensaje.setMaxHeight(100);
-		campoMensaje.setMaxWidth(100);
+		HBox contenedorMensaje = new HBox();
+		contenedorMensaje.getChildren().add(campoMensaje);
+		contenedorMensaje.getChildren().add(btnEnviar);
+		
+        
+        Label nombre = new Label("Usuario " + id);
+        Label campoEscribiendo = new Label("");
+		
+		
+		VBox textoCabecera = new VBox();
+		textoCabecera.getChildren().add(nombre);
+		textoCabecera.getChildren().add(campoEscribiendo);
+		
+		HBox cabecera = new HBox();
+		cabecera.getChildren().add(textoCabecera);
 		
 		HBox root = new HBox();
 		
 		GridPane grid = new GridPane();
 		
-		grid.add(s, 0, 0, 10,1);
-		grid.add(campoMensaje, 0, 2);
-		grid.add(btnEnviar, 0, 3);
+		grid.add(imagenView, 0, 0);
+		
+		grid.add(cabecera, 1, 0);
+		grid.add(s, 0, 1,2,1);
+		grid.add(contenedorMensaje, 0, 2,2,1);	
 		
 		
-		grid.add(escribiendo, 0, 1);
+		grid.add(escribiendo, 1, 0);
 
 		btnEnviar.setOnAction(e -> {
 			c.crearEtiqueta(getCampoMensaje().getText(),this.id);
@@ -68,8 +93,12 @@ public class Vista implements Serializable {
 				c.escribiendo(this.id);
 		});
 		
-
-		Scene scene = new Scene(grid, 400, 400);
+		
+		
+		
+		Scene scene = new Scene(grid, 300, 350);
+		grid.setId("grid");
+		scene.setFill(Color.rgb(255, 249, 238));
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(scene);
 		
@@ -150,13 +179,19 @@ public class Vista implements Serializable {
 	public void crearEtiqueta (Mensaje m) {
 		
 		Label etiqueta = new Label(m.getTexto());
-		etiqueta.setId(m.getId());
 		etiqueta.setWrapText(true);
-		etiqueta.setTextAlignment(TextAlignment.RIGHT);
-		etiqueta.setMaxWidth(150);
-		//etiqueta.setPadding(new Insets(0,0,0,100));
-		fondo.getChildren().add(etiqueta);		
+		etiqueta.setId(m.getId());
+		HBox hbox = new HBox();
+		hbox.getChildren().add(etiqueta);
+		
+		hbox.setId("contenedor" + m.getId());
+		hbox.setMargin(etiqueta, new javafx.geometry.Insets(5, 5, 5, 5));
+		fondo.getChildren().add(hbox);	
 	}
 	
-	
+	private void actualizarScroll () {
+		if(fondo.getChildren().size() >  5) {
+			s.setVvalue(1.0);
+		}
+	}
 }
