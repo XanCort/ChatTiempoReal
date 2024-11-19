@@ -116,26 +116,5 @@ Button:hover {
 
 #contenedorEscribiendo {
 	-fx-alignment: center-left;
-	-fx-max-height: 10.0px;
-    -fx-pref-height: 10.0px;
 }
 
-#etiquetaEscribiendodos {
-	-fx-background-color: rgb(200, 180, 230);
-    -fx-padding: 10.0px;
-    -fx-background-radius: 15.0px;
-    -fx-border-radius: 15.0px;
-    -fx-border-color: rgb(160, 140, 200); 
-    -fx-border-width: 1.5px;
-    
-}
-
-#etiquetaEscribiendouno {
-	-fx-background-color: rgb(180, 210, 230); 
-    -fx-padding: 10.0px;
-    -fx-background-radius: 15.0px;
-    -fx-border-radius: 15.0px;
-    -fx-border-color: rgb(140, 160, 180);
-    -fx-border-width: 1.5px;
-    
-}

@@ -41,7 +41,33 @@ public class Vista implements Serializable {
 	Label etiquetaEscribiendo = new Label();
 	HBox cajaMensaje = new HBox();
 	
-	public void start(Stage primaryStage) {
+	
+	
+	public Label getCampoEscribiendo() {
+		return campoEscribiendo;
+	}
+
+	public void setCampoEscribiendo(Label campoEscribiendo) {
+		this.campoEscribiendo = campoEscribiendo;
+	}
+
+	public Thread getHilo() {
+		return hilo;
+	}
+
+	public void setHilo(Thread hilo) {
+		this.hilo = hilo;
+	}
+
+	public HBox getCajaMensaje() {
+		return cajaMensaje;
+	}
+
+	public void setCajaMensaje(HBox cajaMensaje) {
+		this.cajaMensaje = cajaMensaje;
+	}
+
+	public void start(Stage primaryStage){
 
 		Image imagen = new Image(getClass().getResourceAsStream("/application/carballeira/images/ic_usuario_"+id+".png"));
 		ImageView imagenView = new ImageView(imagen);
@@ -50,7 +76,7 @@ public class Vista implements Serializable {
 		
      // Combinar los textos en un TextFlow
         etiquetaEscribiendo.setGraphic(textFlow);
-        etiquetaEscribiendo.setId("etiquetaEscribiendo" + id);
+        etiquetaEscribiendo.setTranslateY(-25);
 
 		fondo.setId("fondo" + id);
 		campoMensaje.setPromptText("Escribe tu mensaje...");
@@ -88,7 +114,17 @@ public class Vista implements Serializable {
 
 		btnEnviar.setOnAction(e -> {
 
-			
+			if(id.equals("uno")) {
+				c.getVista2().getCajaMensaje().getChildren().clear();
+				c.getVista2().borrarEtiqueta(cajaMensaje);
+				c.getVista2().getCampoEscribiendo().setVisible(false);
+				c.getVista2().getHilo().interrupt();
+			} else {
+				c.getVista1().getCajaMensaje().getChildren().clear();
+				c.getVista1().borrarEtiqueta(cajaMensaje);
+				c.getVista1().getCampoEscribiendo().setVisible(false);
+				c.getVista1().getHilo().interrupt();
+			}
 			c.crearEtiqueta(campoMensaje.getText(), this.getId());
 			campoMensaje.clear();
 			
@@ -108,13 +144,28 @@ public class Vista implements Serializable {
 			// Enter sin Shift para enviar el mensaje
 			else if (event.getCode() == javafx.scene.input.KeyCode.ENTER) {
 				// Llama a la función de envío
-				c.crearEtiqueta(campoMensaje.getText(), this.getId());
-				campoMensaje.clear(); // Limpia el TextArea después de enviar
-				event.consume(); // Evita el salto de línea
+				
+					if(id.equals("uno")) {
+						c.getVista2().getCajaMensaje().getChildren().clear();
+						c.getVista2().borrarEtiqueta(cajaMensaje);
+						c.getVista2().getCampoEscribiendo().setVisible(false);
+						c.getVista2().getHilo().interrupt();
+					} else {
+						c.getVista1().getCajaMensaje().getChildren().clear();
+						c.getVista1().borrarEtiqueta(cajaMensaje);
+						c.getVista1().getCampoEscribiendo().setVisible(false);
+						c.getVista1().getHilo().interrupt();
+					}
+					
+					c.crearEtiqueta(campoMensaje.getText(), this.getId());
+					campoMensaje.clear(); // Limpia el TextArea después de enviar
+					event.consume(); // Evita el salto de línea
+				
+				
 			}
 		});
 
-		Scene scene = new Scene(contenedor, 400, 400);
+		Scene scene = new Scene(contenedor, 300, 350);
 		scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("vista " + id);
@@ -143,19 +194,23 @@ public class Vista implements Serializable {
 		
 		if (hilo == null || !hilo.isAlive()) {
 			
+			borrarEtiqueta(cajaMensaje);
+			
+			
+			
 			etiquetaEscribiendo.setWrapText(true);
-			//etiquetaEscribiendo.setId(id);
 			
 			cajaMensaje.getChildren().add(etiquetaEscribiendo);
 			cajaMensaje.setId("contenedorEscribiendo");
 			cajaMensaje.setMargin(etiquetaEscribiendo, new javafx.geometry.Insets(5, 5, 5, 5));
 			fondo.getChildren().add(cajaMensaje);
 			
-			System.out.println("enta aqui");
 			hilo = new Thread(new Runnable() {
 				@Override
 				public void run() {
 					try {
+						
+						campoEscribiendo.setVisible(true);
 
 						Platform.runLater(() -> {
 							campoEscribiendo.setText("Escribiendo");
@@ -197,8 +252,8 @@ public class Vista implements Serializable {
 	}
 	
 	
-	public void borrarEtiqueta(HBox etiqueta) {
-		fondo.getChildren().remove(etiqueta);
+	public void borrarEtiqueta(HBox contenedor) {
+		fondo.getChildren().remove(contenedor);
 	}
 	
 	public void crearEtiqueta(String texto, String id) {

@@ -1,5 +1,5 @@
 
-module chatTiempoReal {
+module ChatTiempoReal {
 
 	requires javafx.graphics;
 	requires javafx.controls;
