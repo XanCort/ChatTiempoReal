@@ -52,6 +52,13 @@ public class Controlador {
 			
 		}
 	}
-	
+	public void cancelarEscribiendo(String id) {
+		if(vista1.id.equals(id)) {
+			vista2.acabarHilo();
+		}else if (vista2.id.equals(id)) {
+			vista1.acabarHilo();
+			
+		}
+	}
 	
 }

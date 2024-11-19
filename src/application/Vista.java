@@ -55,6 +55,7 @@ public class Vista implements Serializable {
         );
 		
 		
+		
 		HBox contenedorMensaje = new HBox();
 		contenedorMensaje.getChildren().add(campoMensaje);
 		contenedorMensaje.getChildren().add(btnEnviar);
@@ -86,6 +87,7 @@ public class Vista implements Serializable {
 
 		btnEnviar.setOnAction(e -> {
 			c.crearEtiqueta(getCampoMensaje().getText(),this.id);
+			c.cancelarEscribiendo(this.id);
 		
 		});
 		
@@ -149,11 +151,12 @@ public class Vista implements Serializable {
 	
 	public void empezarEscribir() {
 		if(hilo==null || !hilo.isAlive()) {
+			
 			hilo = new Thread(new Runnable() {
 			    @Override
 			    public void run() {
 			        try {
-			        	
+			        	escribiendo.setVisible(true);
 			            Platform.runLater(() -> escribiendo.setText("Escribiendo"));
 			            Thread.sleep(1000);
 			            Platform.runLater(() -> escribiendo.setText("Escribiendo."));
@@ -193,5 +196,18 @@ public class Vista implements Serializable {
 		if(fondo.getChildren().size() >  5) {
 			s.setVvalue(1.0);
 		}
+	}
+	
+	public void acabarHilo(){
+		try {
+			
+			if(hilo!=null && hilo.isAlive()) {
+				hilo.interrupt();
+				escribiendo.setVisible(false);
+			}
+		}catch (InterruptedException e) {
+			System.out.println("prueba");
+		}
+		
 	}
 }
