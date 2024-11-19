@@ -1,110 +1,141 @@
-<<<<<<< HEAD
-/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
-=======
-primaryStage{
-	-fx-max-height: 440.0px;
-	-fx-max-width: 400px;
-	-fx-pref-height: 440px;
-	-fx-pref-width: 400px;
+primaryStage {
+    -fx-max-height: 440.0px;
+    -fx-max-width: 400px;
+    -fx-pref-height: 440px;
+    -fx-fx-pref-width: 400px;
+    
 }
 
 ScrollPane {
-	
-	-fx-max-height: 300.0px;
-	-fx-max-width: 300.0px;
-	-fx-pref-height: 300.0px;
-	-fx-pref-width: 300.0px;
-	
+    -fx-max-height: 300.0px;
+    -fx-max-width: 300.0px;
+    -fx-pref-height: 300.0px;
+    -fx-pref-width: 300.0px;
+    -fx-background-color: rgb(240, 240, 250); /*Esto solo sirve para el borde si lo quitamos queda igual pero se ven los bordes del scrollpane que tampoco queda mal del todo */
+}
+ScrollPane .viewport {
+    -fx-background-color: rgb(240, 240, 250); 
 }
 
-TextArea{
-	-fx-max-height: 40.0px;
-	-fx-max-width: 225.0px;
-	-fx-pref-height: 40.0px;
-	-fx-pref-width: 225px;
+TextArea {
+    -fx-max-height: 40.0px;
+    -fx-max-width: 225.0px;
+    -fx-pref-height: 40.0px;
+    -fx-pref-width: 225px;
+    -fx-background-color: rgb(248, 226, 135); 
+    -fx-text-fill: rgb(34, 27, 0); 
+    -fx-prompt-text-fill: rgb(124, 119, 103); 
+    -fx-border-color: rgb(200, 200, 220);
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
 }
 
-Button{
-	-fx-max-height: 40.0px;
-	-fx-max-width: 75.0px;
-	-fx-pref-height: 40.0px;
-	-fx-pref-width: 75px;
+Button {
+    -fx-max-height: 40.0px;
+    -fx-max-width: 75.0px;
+    -fx-pref-height: 40.0px;
+    -fx-pref-width: 75px;
+    -fx-background-color: rgb(100, 80, 130); 
+    -fx-text-fill: rgb(255, 255, 255); 
+    -fx-background-radius: 5;
 }
 
-VBox #fondouno{
-	-fx-max-height: 300.0px;
-	-fx-max-width: 285.0px;
-	-fx-pref-height: 300.0px;
-	-fx-pref-width: 285.0px;
-	-fx-background-color: blue;
-	-fx-padding: 5px;
-	
+Button:hover {
+    -fx-background-color: rgb(130, 110, 170); 
 }
 
 #fondouno #uno {
-	-fx-background-color: RED;  
-    -fx-text-fill: white;             
-    -fx-padding: 10.0px;                 
-    -fx-background-radius: 15.0px;     
-    -fx-border-radius: 15.0px;           
-    -fx-border-color: #2980b9;          
+    -fx-background-color: rgb(200, 180, 230); 
+    -fx-text-fill: rgb(50, 40, 60); 
+    -fx-padding: 10.0px;
+    -fx-background-radius: 15.0px;
+    -fx-border-radius: 15.0px;
+    -fx-border-color: rgb(160, 140, 200); 
     -fx-border-width: 2.0px;
 }
 
 #fondouno #dos {
-	-fx-background-color: BLUE;  
-    -fx-text-fill: white;             
-    -fx-padding: 10.0px;                 
-    -fx-background-radius: 15.0px;     
-    -fx-border-radius: 15.0px;           
-    -fx-border-color: #2980b9;          
-    -fx-border-width: 2.0px;
+    -fx-background-color: rgb(180, 210, 230);
+    -fx-text-fill: rgb(30, 40, 50); 
+    -fx-padding: 10.0px;
+    -fx-background-radius: 15.0px;
+    -fx-border-radius: 15.0px;
+    -fx-border-color: rgb(140, 160, 180); 
+    -fx-border-width: 1.5px;
 }
 
 #fondouno #contenedoruno {
-	-fx-alignment: center-right;
+    -fx-alignment: center-right;
 }
 
 #fondouno #contenedordos {
-	-fx-alignment: center-left;
+    -fx-alignment: center-left;
 }
 
 #fondodos #uno {
-	-fx-background-color: RED;  
-    -fx-text-fill: white;             
-    -fx-padding: 10.0px;                 
-    -fx-background-radius: 15.0px;     
-    -fx-border-radius: 15.0px;           
-    -fx-border-color: #2980b9;          
-    -fx-border-width: 2.0px;
+    -fx-background-color: rgb(200, 180, 230);
+    -fx-text-fill: rgb(50, 40, 60); 
+    -fx-padding: 10.0px;
+    -fx-background-radius: 15.0px;
+    -fx-border-radius: 15.0px;
+    -fx-border-color: rgb(160, 140, 200); 
+    -fx-border-width: 1.5px;
 }
 
 #fondodos #dos {
-	-fx-background-color: BLUE;  
-    -fx-text-fill: white;             
-    -fx-padding: 10.0px;                 
-    -fx-background-radius: 15.0px;     
-    -fx-border-radius: 15.0px;           
-    -fx-border-color: #2980b9;          
-    -fx-border-width: 2.0px;
+    -fx-background-color: rgb(180, 210, 230); 
+    -fx-text-fill: rgb(30, 40, 50);
+    -fx-padding: 10.0px;
+    -fx-background-radius: 15.0px;
+    -fx-border-radius: 15.0px;
+    -fx-border-color: rgb(140, 160, 180);
+    -fx-border-width: 1.5px;
 }
 
 #fondodos #contenedoruno {
-	-fx-alignment: center-left;
-}
-#fondodos #contenedordos {
-	-fx-alignment: center-right;
+    -fx-alignment: center-left;
 }
 
-#escribiendoUno {
-	-fx-font-size: 20px;
-	-fx-font-weight: bold;
-	-fx-background-color: BLUE;  
-    -fx-text-fill: white;             
-    -fx-padding: 10.0px;                 
-    -fx-background-radius: 15.0px;     
-    -fx-border-radius: 15.0px;           
-    -fx-border-color: #2980b9;          
-    -fx-border-width: 2.0px;
+#fondodos #contenedordos {
+    -fx-alignment: center-right;
 }
->>>>>>> master
+
+
+
+#puntoClaro{
+	-fx-fill: #A9A9A9; 
+	-fx-font-weight: bold;
+	-fx-font-size: 40px;
+}
+
+#puntoOscuro{
+	-fx-fill: #4B4B4B; 
+	-fx-font-weight: bold;
+	-fx-font-size: 40px;
+}
+
+#contenedorEscribiendo {
+	-fx-alignment: center-left;
+	-fx-max-height: 10.0px;
+    -fx-pref-height: 10.0px;
+}
+
+#etiquetaEscribiendodos {
+	-fx-background-color: rgb(200, 180, 230);
+    -fx-padding: 10.0px;
+    -fx-background-radius: 15.0px;
+    -fx-border-radius: 15.0px;
+    -fx-border-color: rgb(160, 140, 200); 
+    -fx-border-width: 1.5px;
+    
+}
+
+#etiquetaEscribiendouno {
+	-fx-background-color: rgb(180, 210, 230); 
+    -fx-padding: 10.0px;
+    -fx-background-radius: 15.0px;
+    -fx-border-radius: 15.0px;
+    -fx-border-color: rgb(140, 160, 180);
+    -fx-border-width: 1.5px;
+    
+}
