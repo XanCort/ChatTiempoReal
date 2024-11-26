@@ -1,4 +1,4 @@
-package application;
+package modelo;
 
 public class Mensaje {
 
@@ -23,6 +23,8 @@ public class Mensaje {
 		this.id = id;
 	}
 	
+	
+	//Comprobacion de que el mensaje no está vacío o compuesto de espacios en blanco
 	public boolean isEmpty(){
 		
 		if(this.texto.trim().isEmpty()) {

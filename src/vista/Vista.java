@@ -1,8 +1,9 @@
-package application;
+package vista;
 
 import javafx.scene.control.TextArea;
 import java.io.Serializable;
 
+import controlador.Controlador;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -19,6 +20,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+import modelo.Mensaje;
 
 public class Vista implements Serializable {
 
@@ -37,6 +39,7 @@ public class Vista implements Serializable {
 	
 		escribiendo = new Label("");
 
+		//Establece la imagen de usuario en funcion de la id de la ventana
 		Image imagen = new Image(getClass().getResourceAsStream("images/ic_usuario_"+id+".png"));
 		ImageView imagenView = new ImageView(imagen);
 		
@@ -85,6 +88,7 @@ public class Vista implements Serializable {
 		
 		grid.add(escribiendo, 1, 0);
 
+		//El boton enviar
 		btnEnviar.setOnAction(e -> {
 			c.crearEtiqueta(getCampoMensaje().getText(),this.id);
 			c.cancelarEscribiendo(this.id);
@@ -120,35 +124,8 @@ public class Vista implements Serializable {
 		return campoMensaje;
 	}
 
-	public void setCampoMensaje(TextArea campoMensaje) {
-		this.campoMensaje = campoMensaje;
-	}
 
-	public Button getBtnEnviar() {
-		return btnEnviar;
-	}
-
-	public void setBtnEnviar(Button btnEnviar) {
-		this.btnEnviar = btnEnviar;
-	}
-
-	public ScrollPane getS() {
-		return s;
-	}
-
-	public void setS(ScrollPane s) {
-		this.s = s;
-	}
-
-	public VBox getFondo() {
-		return fondo;
-	}
-
-	public void setFondo(VBox fondo) {
-		this.fondo = fondo;
-	}
-
-	
+	//Se crea el hilo para mostrar el mensaje de "Escribiendo"
 	public void empezarEscribir() {
 		if(hilo==null || !hilo.isAlive()) {
 			
@@ -179,6 +156,7 @@ public class Vista implements Serializable {
 	
 	
 	
+	//Método para crear y añadir mensajes al "chat"
 	public void crearEtiqueta (Mensaje m) {
 		
 		Label etiqueta = new Label(m.getTexto());
@@ -187,6 +165,7 @@ public class Vista implements Serializable {
 		HBox hbox = new HBox();
 		hbox.getChildren().add(etiqueta);
 		
+		//Se establece la id para poder poner css distinto en funcion de quien haya mandado el mensaje
 		hbox.setId("contenedor" + m.getId());
 		hbox.setMargin(etiqueta, new javafx.geometry.Insets(5, 5, 5, 5));
 		fondo.getChildren().add(hbox);	
@@ -197,17 +176,21 @@ public class Vista implements Serializable {
 			s.setVvalue(1.0);
 		}
 	}
-	
+	//Corta el mensaje de escribiendo en caso de que se envie el mensaje
 	public void acabarHilo(){
-		try {
-			
-			if(hilo!=null && hilo.isAlive()) {
-				hilo.interrupt();
-				escribiendo.setVisible(false);
-			}
-		}catch (InterruptedException e) {
-			System.out.println("prueba");
+		if(hilo!=null && hilo.isAlive()) {
+			hilo.interrupt();
+			escribiendo.setVisible(false);
 		}
 		
 	}
+	
+	
+	public void borrarEtiqueta(HBox contenedor) {
+		fondo.getChildren().remove(contenedor);
+	}
+	
+	
+	
+	
 }
